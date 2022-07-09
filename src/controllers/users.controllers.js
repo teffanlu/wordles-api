@@ -18,18 +18,18 @@ const getGamer = async (req, res) => {
 const createGamer = async (req, res) => {
   const client = await pool.connect();
   try{
-    const { name, userName, phoneNumber, email, password } = req.body;
-    console.log(name, userName, phoneNumber, email, password);
+    const { name, userName, phoneNumber, gmail, password } = req.body;
+    console.log(name, userName, phoneNumber, gmail, password);
     const response = await client.query(query.createGamer, [
       name, 
       userName, 
       phoneNumber, 
-      email, 
+      gmail, 
       password
     ]);
 
     //send email of welcome
-    //await mail(nombre, email, "empresa");
+    //await mail(nombre, gmail, "empresa");
     res.status(200).json(response.rows);
   }catch{
     res.status(505);
@@ -42,13 +42,13 @@ const updateGamer = async (req, res) => {
   const client = await pool.connect();
   try{
       const id = parseInt(req.params.id);
-      const { name, userName, phoneNumber, email, password } = req.body;
-      console.log(name, userName, phoneNumber, email, password, id);
+      const { name, userName, phoneNumber, gmail, password } = req.body;
+      console.log(name, userName, phoneNumber, gmail, password, id);
       await client.query(query.updateGamer, [ 
         name, 
         userName, 
         phoneNumber, 
-        email, 
+        gmail, 
         password, 
         id
       ]);
