@@ -1,5 +1,4 @@
 const express = require("express");
-const fileUpload = require('express-fileupload');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -12,15 +11,9 @@ server.use(cors());
 server.use(helmet());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
-server.use(
-    fileUpload({
-        useTempFiles: true,
-        tempFileDir: "./uploads",
-    })
-);
 
 //rutas
 server.use('/api/users', require('./routes/users'));
-server.use('/api/info', require('./routes/info'));
+//server.use('/api/info', require('./routes/info'));
 
 module.exports = server;
