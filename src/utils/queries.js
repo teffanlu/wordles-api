@@ -6,7 +6,7 @@ module.exports = {
 
     deleteGamer: 'DELETE FROM "gamer" WHERE "id" = $1',
 
-    updateGamer: 'UPDATE "gamer" SET "name" = $1, "userName" = $2, "phoneNumber" = $3, "gmail" = $4, "password" = %5 WHERE "id" = $6 RETURNING *',
+    updateGamer: 'UPDATE "gamer" SET "name" = $1, "userName" = $2, "phoneNumber" = $3, "gmail" = $4, "password" = $5 WHERE "id" = $6 RETURNING *',
     updateStatisticsGamer: 'UPDATE "gamer" SET "totalPoints" = $1, "currentStreak" = $2, "winStreak" = $3 WHERE "id" = $4 RETURNING *',
 
     //Querys rooms, statistics ...

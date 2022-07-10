@@ -44,7 +44,7 @@ const updateGamer = async (req, res) => {
       const id = parseInt(req.params.id);
       const { name, userName, phoneNumber, gmail, password } = req.body;
       console.log(name, userName, phoneNumber, gmail, password, id);
-      let response = await client.query(query.updateGamer, [ 
+      const response = await client.query(query.updateGamer, [ 
         name, 
         userName, 
         phoneNumber, 
@@ -52,7 +52,7 @@ const updateGamer = async (req, res) => {
         password, 
         id
       ]);
-      console.log(response);
+      
       res.status(200).json(response.rows);
   }catch{
       res.status(505);
@@ -74,7 +74,7 @@ const updateStatisticsGamer = async (req, res) => {
         id
       ]);
       console.log(response);
-      res.status(200).json(`Gamer with id: ${id}, update Successfully`);
+      res.status(200).json(response.rows);
   }catch{
       res.status(505);
   }finally{
