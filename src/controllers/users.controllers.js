@@ -53,7 +53,7 @@ const updateGamer = async (req, res) => {
         id
       ]);
       console.log(response);
-      res.status(200).json(`Gamer with id: ${id}, update Successfully`);
+      res.status(200).json(response.rows);
   }catch{
       res.status(505);
   }finally{
