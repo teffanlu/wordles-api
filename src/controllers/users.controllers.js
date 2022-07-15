@@ -6,6 +6,7 @@ const getGamer = async (req, res) => {
   const client = await pool.connect();
   try{
     const { userName } = req.body;
+    console.log(userName);
     const response = await client.query(query.getGamer, [userName]);
     res.status(200).json(response.rows);
   }catch{
@@ -95,10 +96,33 @@ const deleteGamer = async (req, res) => {
   }
 };
 
+const confirmCodigo = async (req, res) => {
+  const client = await pool.connect();
+  try{
+    const { gmail, codigo } = req.body;
+    console.log(gmail, codigo);
+    const response = await client.query(query.confirmCodigo, [codigo]);
+
+    if(response.rows.data.gmail === gmail){
+      res.status(200).json(response.rows);
+      return 0;
+    }
+
+    res.status(200).json({error: '505'});
+    return 1;
+    
+  }catch{
+    res.status(505);
+  }finally{
+    client.release(true);
+  }
+};
+
 module.exports = {
   getGamer,
   createGamer,
   deleteGamer,
   updateGamer,
-  updateStatisticsGamer
+  updateStatisticsGamer,
+  confirmCodigo
 };

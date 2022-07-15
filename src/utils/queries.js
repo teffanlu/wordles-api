@@ -9,6 +9,8 @@ module.exports = {
     updateGamer: 'UPDATE "gamer" SET "name" = $1, "userName" = $2, "phoneNumber" = $3, "gmail" = $4, "password" = $5 WHERE "id" = $6 RETURNING *',
     updateStatisticsGamer: 'UPDATE "gamer" SET "totalPoints" = $1, "currentStreak" = $2, "winStreak" = $3 WHERE "id" = $4 RETURNING *',
 
+    confirmCodigo: 'SELECT * FROM "clave" WHERE "clave" = $1',
+
     //Querys rooms, statistics ...
 
     getRooms: 'SELECT * FROM "word"',
