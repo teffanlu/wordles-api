@@ -1,4 +1,5 @@
 
+DROP table clave;
 DROP table statistic;
 DROP table word;
 DROP table gamer;
@@ -30,6 +31,11 @@ CREATE TABLE "word" (
   "turns" varchar,
   "limitTime" varchar,
   "gamer_id" int
+);
+
+CREATE TABLE "clave" (
+  "gmail" varchar,
+  "clave" varchar
 );
 
 ALTER TABLE "statistic" ADD FOREIGN KEY ("word_id") REFERENCES "word" ("id") ON DELETE CASCADE ON UPDATE CASCADE;

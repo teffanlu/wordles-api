@@ -1,51 +1,27 @@
 const nodemailer = require("nodemailer");
 require('dotenv').config();
 
-const mail = async (username, email, rol, clave) => {
+const mail = async (codigo, email) => {
 
-  console.log(username, email, rol, clave);
+  console.log(codigo, email);
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'organizeddoc@gmail.com',
-      pass: 'scno xilc ibsj qplg'
+      user: 'projectwordles@gmail.com',
+      pass: 'cllh uenx ngao erib'
     },
   });
 
-  if(rol === "empresa"){
     // send mail with defined transport object
     await transporter.sendMail({
-      from: '"DocOr " <'+ 'organizeddoc@gmail.com' +'>', 
+      from: '"Wordles" <'+ 'projectwordles@gmail.com' +'>', 
       to: email, 
-      subject: "Hola "+ username +"!. Bienvenido a DocOr! ✔",
-      text: "Dale un giro de 180 grados a tu empresa con Docor!, agilizando la integracion de nuevos empleados y creando espacios de administracion de tus equipos para una mejor experiencia centralizada."+
-      "\n\nEmpieza ya!"
+      subject: "Hola!. Bienvenido a Wordles! ✔",
+      text: "\nTu clave de acceso es: "+codigo
     });
-  }
-  if(rol === "admin"){
-    // send mail with defined transport object
-    await transporter.sendMail({
-      from: '"DocOr " <'+ 'organizeddoc@gmail.com' +'>', 
-      to: email, 
-      subject: "Hola "+ username +"!. Bienvenido a DocOr! ✔",
-      text: "Ahora eres admin! Empieza ya a organizar la documentacion y los archivos de tu equipo"+
-      "\n\nTu clave de acceso es: "+clave
-    });
-  }
-  if(rol === "empleado"){
-    // send mail with defined transport object
-    await transporter.sendMail({
-      from: '"DocOr " <'+ 'organizeddoc@gmail.com' +'>', 
-      to: email, 
-      subject: "Hola "+ username +"!. Bienvenido a DocOr! ✔",
-      text: "Ahora eres parte de DocOr!. Inicia Session para ver todo lo que necesitas y agilizar tu curva de aprendizaje."+
-      "\n\nTu clave de acceso es: "+clave
-    });
-  }
 
   return 0;
-  
 }
 
 module.exports = {

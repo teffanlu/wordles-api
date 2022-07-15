@@ -7,11 +7,13 @@ const {
   deleteGamer,
   updateGamer,
   updateStatisticsGamer,
-  confirmCodigo
+  confirmCodigo,
+  createCodigo
 } = require('../controllers/users.controllers');
 
 router.post('/gamer', getGamer);
 router.post('/newGamer', createGamer);
+router.post('/createCodigo', createCodigo);
 router.post('/codigo', confirmCodigo);
 router.delete('/gamer/:id', deleteGamer);
 router.put('/gamer/:id', updateGamer);

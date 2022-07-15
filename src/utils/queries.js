@@ -1,6 +1,8 @@
 module.exports = {
     //Querys user
     getGamer: 'SELECT * FROM "gamer" WHERE "userName" = $1',
+    getForPhone: 'SELECT * FROM "gamer" WHERE "phoneNumber" = $1',
+    getForGmail: 'SELECT * FROM "gamer" WHERE "gmail" = $1',
 
     createGamer: 'INSERT INTO "gamer" ("name", "userName", "phoneNumber", "gmail", "password") VALUES ($1, $2, $3, $4, $5) RETURNING *',
 
@@ -9,6 +11,7 @@ module.exports = {
     updateGamer: 'UPDATE "gamer" SET "name" = $1, "userName" = $2, "phoneNumber" = $3, "gmail" = $4, "password" = $5 WHERE "id" = $6 RETURNING *',
     updateStatisticsGamer: 'UPDATE "gamer" SET "totalPoints" = $1, "currentStreak" = $2, "winStreak" = $3 WHERE "id" = $4 RETURNING *',
 
+    createCodigo: 'INSERT INTO "clave" ("gmail", "clave") VALUES ($1, $2) RETURNING *',
     confirmCodigo: 'SELECT * FROM "clave" WHERE "clave" = $1',
 
     //Querys rooms, statistics ...

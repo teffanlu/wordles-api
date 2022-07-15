@@ -5,10 +5,20 @@ const query = require('../utils/queries');
 const getGamer = async (req, res) => {
   const client = await pool.connect();
   try{
-    const { userName } = req.body;
-    console.log(userName);
-    const response = await client.query(query.getGamer, [userName]);
-    res.status(200).json(response.rows);
+    const { userName, phoneNumber, gmail } = req.body;
+    console.log(userName, phoneNumber, gmail);
+
+    if(phoneNumber === undefined || gmail === undefined){
+      const response = await client.query(query.getGamer, [userName]);
+      res.status(200).json(response.rows);
+    } else {
+      const response = await client.query(query.getGamer, [userName]);
+      const response2 = await client.query(query.getForPhone, [phoneNumber]);
+      const response3 = await client.query(query.getForGmail, [gmail]);
+      res.status(200).json([response.rows, response2.rows, response3.rows]);
+    }
+
+    
   }catch{
     res.status(505);
   }finally{
@@ -118,11 +128,33 @@ const confirmCodigo = async (req, res) => {
   }
 };
 
+const createCodigo = async (req, res) => {
+  const client = await pool.connect();
+  try{
+    const { gmail } = req.body;
+
+    var codigo = Math.trunc(Math.random() * (9999 - 1000) + 1000);
+
+    console.log(gmail, codigo);
+    const response = await client.query(query.createCodigo, [gmail, codigo]);
+
+    //send email of Confirmacion de email
+    await mail(codigo, gmail);
+
+    res.status(200).json(response.rows);    
+  }catch{
+    res.status(505);
+  }finally{
+    client.release(true);
+  }
+};
+
 module.exports = {
   getGamer,
   createGamer,
   deleteGamer,
   updateGamer,
   updateStatisticsGamer,
-  confirmCodigo
+  confirmCodigo,
+  createCodigo
 };
