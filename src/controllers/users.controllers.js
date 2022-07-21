@@ -84,7 +84,7 @@ const updateStatisticsGamer = async (req, res) => {
         winStreak,
         id
       ]);
-      console.log(response);
+      console.log(response.rows);
       res.status(200).json(response.rows);
   }catch{
       res.status(505);

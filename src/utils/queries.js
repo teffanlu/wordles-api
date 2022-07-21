@@ -17,13 +17,13 @@ module.exports = {
     //Querys rooms, statistics ...
 
     getRooms: 'SELECT * FROM "word"',
-    getRoom: 'SELECT * FROM "word" WHERE "id" = $1',
+    getRoom: '',
     createRoom: 'INSERT INTO "word" ("word", "turns", "limitTime", "gamer_id") VALUES ($1, $2, $3, $4) RETURNING *',
     deleteRoom: 'DELETE FROM "word" WHERE "id" = $1',
     updateRoom: 'UPDATE "word" SET "word" = $1, "turns" = $2, "limitTime" = $3 WHERE "id" = $4 RETURNING *',
 
-    getStacts: 'SELECT * FROM "statistic"',
-    getStact: 'SELECT * FROM "statistic" WHERE "id" = $1',
+    getStacts: 'SELECT * FROM "statistic" WHERE "gamer_id" = $1',
+    getStact: 'SELECT * FROM "statistic" WHERE "gamer_id" = $1 AND "word_id" = $2',
     createStacts: 'INSERT INTO "statistic" ("totalPoints", "totalTime", "totalTurns", "word_id", "gamer_id") VALUES ($1, $2, $3, $4, $5) RETURNING *',
 
 }
