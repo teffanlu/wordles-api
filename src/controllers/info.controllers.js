@@ -34,16 +34,17 @@ const createRoom = async (req, res) => {
 };
 
 const getRoom = async (req, res) => {
-    /*const client = await pool.connect();
+    const client = await pool.connect();
     try{
-        let response = await client.query(query.getRoom);
+        const id = parseInt(req.params.id);
+        let response = await client.query(query.getRoom, [id]);
         console.log(response.rows);
         res.status(200).json(response.rows);
     }catch{
         res.status(505);
     }finally{
         client.release(true);
-    }*/
+    }
 };
 
 const deleteRoom = async (req, res) => {

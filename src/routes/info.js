@@ -13,7 +13,7 @@ const {
 } = require('../controllers/info.controllers');
 
 router.get('/rooms', getRooms);
-router.get('/room', getRoom);
+router.get('/room/:id', getRoom);
 router.post('/room', createRoom);
 router.delete('/room/:id', deleteRoom);
 router.put('/room/:id', updateRoom);
