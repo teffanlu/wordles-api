@@ -9,10 +9,12 @@ const {
     updateRoom,
     getStacts,
     getStact,
-    createStacts
+    createStacts,
+    getRoomsGamer
 } = require('../controllers/info.controllers');
 
 router.get('/rooms', getRooms);
+router.get('/roomsGamer/:id', getRoomsGamer);
 router.get('/room/:id', getRoom);
 router.post('/room', createRoom);
 router.delete('/room/:id', deleteRoom);

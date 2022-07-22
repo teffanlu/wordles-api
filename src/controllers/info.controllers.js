@@ -47,6 +47,20 @@ const getRoom = async (req, res) => {
     }
 };
 
+const getRoomsGamer = async (req, res) => {
+    const client = await pool.connect();
+    try{
+        const id = parseInt(req.params.id);
+        let response = await client.query(query.getRoomsGamer, [id]);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    }catch{
+        res.status(505);
+    }finally{
+        client.release(true);
+    }
+};
+
 const deleteRoom = async (req, res) => {
     const client = await pool.connect();
     try{
@@ -145,5 +159,6 @@ module.exports = {
     updateRoom,
     getStacts,
     getStact,
-    createStacts
+    createStacts,
+    getRoomsGamer
 };

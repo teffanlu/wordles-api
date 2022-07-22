@@ -17,6 +17,7 @@ module.exports = {
     //Querys rooms, statistics ...
 
     getRooms: 'SELECT * FROM "word"',
+    getRoomsGamer: 'SELECT * FROM "word" WHERE "gamer_id" = $1',
     getRoom: 'SELECT * FROM "word" WHERE "id" = $1',
     createRoom: 'INSERT INTO "word" ("word", "turns", "limitTime", "gamer_id") VALUES ($1, $2, $3, $4) RETURNING *',
     deleteRoom: 'DELETE FROM "word" WHERE "id" = $1',
