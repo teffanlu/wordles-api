@@ -1,5 +1,6 @@
 module.exports = {
     //Querys user
+    getGamers: 'SELECT * FROM "gamer"',
     getGamer: 'SELECT * FROM "gamer" WHERE "userName" = $1',
     getForPhone: 'SELECT * FROM "gamer" WHERE "phoneNumber" = $1',
     getForGmail: 'SELECT * FROM "gamer" WHERE "gmail" = $1',

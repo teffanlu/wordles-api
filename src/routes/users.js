@@ -8,9 +8,11 @@ const {
   updateGamer,
   updateStatisticsGamer,
   confirmCodigo,
-  createCodigo
+  createCodigo,
+  getGamers
 } = require('../controllers/users.controllers');
 
+router.get('/gamers', getGamers);
 router.post('/gamer', getGamer);
 router.post('/newGamer', createGamer);
 router.post('/createCodigo', createCodigo);

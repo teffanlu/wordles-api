@@ -2,6 +2,18 @@ const pool = require('../utils/dbconnection');
 const { mail } = require('../utils/mailer');
 const query = require('../utils/queries');
 
+const getGamers = async (req, res) => {
+  const client = await pool.connect();
+  try{
+    const response = await client.query(query.getGamers);
+    res.status(200).json(response.rows);
+  }catch{
+    res.status(505);
+  }finally{
+    client.release(true);
+  }
+};
+
 const getGamer = async (req, res) => {
   const client = await pool.connect();
   try{
@@ -156,5 +168,6 @@ module.exports = {
   updateGamer,
   updateStatisticsGamer,
   confirmCodigo,
-  createCodigo
+  createCodigo,
+  getGamers
 };
