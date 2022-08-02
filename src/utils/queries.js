@@ -1,6 +1,6 @@
 module.exports = {
     //Querys user
-    getGamers: 'SELECT * FROM "gamer"',
+    getGamers: 'SELECT * FROM "gamer" order by "totalPoints" desc',  //Organizar por totalpoint en orden decendente
     getGamer: 'SELECT * FROM "gamer" WHERE "userName" = $1',
     getForPhone: 'SELECT * FROM "gamer" WHERE "phoneNumber" = $1',
     getForGmail: 'SELECT * FROM "gamer" WHERE "gmail" = $1',
